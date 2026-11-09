@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>生活小幫手：Tool Use Agent｜王小明</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="../index.html">王小明</a>
+      <nav class="site-nav" aria-label="主選單">
+        <a href="../index.html">首頁</a>
+        <a href="../projects.html" aria-current="page">作品與筆記</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="detail detail--project">
+      <a class="back" href="../projects.html">回到作品與筆記</a>
+      <span class="detail__type">程式專案</span>
+      <h1>生活小幫手：Tool Use Agent</h1>
+      <p class="detail__meta">2026-11-09｜Python、Gradio、LLM、Tool Use</p>
+
+      <h2>專案簡介</h2>
+      <p>這是 AI Agent 課程的作業，選擇的設計模式是 Tool Use。使用者用自然語言提問，AI 會自己判斷要不要用工具、要用哪一個，再根據工具算出的結果回答。目前提供三個工具：計算機、查詢城市現在時間、計算 BMI。</p>
+
+      <h2>使用技術</h2>
+      <ul>
+        <li>Python 與 Google Colab</li>
+        <li>aisuite 串接 Groq 上的大型語言模型</li>
+        <li>Gradio 建立網頁操作介面</li>
+      </ul>
+
+      <h2>運作方式</h2>
+      <ol>
+        <li><strong>選工具：</strong>AI 讀取工具說明後，以 JSON 輸出要用的工具和參數，例如 <code>{"tool": "bmi", "args": {"height_cm": 170, "weight_kg": 65}}</code>。</li>
+        <li><strong>執行工具：</strong>程式解析 JSON，呼叫對應的 Python function 實際計算，避免模型自己算錯。</li>
+        <li><strong>整理回答：</strong>把工具結果交回給 AI，用自然的中文回覆使用者；不需要工具時就直接回答。</li>
+      </ol>
+<pre><code>def tool_agent(prompt):
+    decision = reply(system_router, prompt)       # 1. 選工具
+    tool_result = TOOLS[tool_name](**args)        # 2. 執行工具
+    answer = reply(system_answer, final_prompt)   # 3. 整理回答
+    return tool_info, tool_result, answer</code></pre>
+
+      <h2>成果截圖</h2>
+      <div class="shot shot--empty">請放入截圖：images/tool-use-agent-1.png</div>
+
+      <h2>心得</h2>
+      <p>做完才發現，Tool Use 的重點是讓 AI 負責「判斷」，讓程式負責「計算」。語言模型算數字不一定準，但很擅長看懂問題、選出合適的工具，兩者搭配起來答案就可靠多了。</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span data-year></span> 王小明</div>
+  </footer>
+
+  <script src="../data/works.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

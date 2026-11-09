@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作品與筆記｜戴湘庭</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">戴湘庭</a>
+      <nav class="site-nav" aria-label="主選單">
+        <a href="index.html">首頁</a>
+        <a href="projects.html" aria-current="page">作品與筆記</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="page-title">
+      <h1>作品與筆記</h1>
+      <p>我做過的程式專案，以及上課和自學時整理的筆記。</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="依類型篩選">
+      <button type="button" data-filter="all" aria-pressed="true">全部</button>
+      <button type="button" data-filter="project" aria-pressed="false">程式專案</button>
+      <button type="button" data-filter="note" aria-pressed="false">筆記</button>
+      <span class="count" id="work-count" aria-live="polite"></span>
+    </div>
+
+    <ul class="work-list" id="work-list"></ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span data-year></span> 戴湘庭</div>
+  </footer>
+
+  <script src="data/works.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

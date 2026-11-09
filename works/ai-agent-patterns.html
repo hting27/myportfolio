@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent 三種設計模式｜王小明</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="../index.html">王小明</a>
+      <nav class="site-nav" aria-label="主選單">
+        <a href="../index.html">首頁</a>
+        <a href="../projects.html" aria-current="page">作品與筆記</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="detail detail--note">
+      <a class="back" href="../projects.html">回到作品與筆記</a>
+      <span class="detail__type">筆記</span>
+      <h1>AI Agent 三種設計模式</h1>
+      <p class="detail__meta">2026-11-05｜AI Agent、課堂筆記</p>
+
+      <h2>重點整理</h2>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>模式</th><th>做法</th><th>適合的情境</th></tr></thead>
+          <tbody>
+            <tr><td>Reflection</td><td>先產生結果，再自己檢查、反思並修改</td><td>寫作、潤稿、需要提升品質的內容</td></tr>
+            <tr><td>Tool Use</td><td>依需求選擇並使用工具，例如計算機、搜尋、自己寫的 function</td><td>需要精確計算或即時資料的問題</td></tr>
+            <tr><td>Planning</td><td>先把任務拆成步驟，再依照計畫逐步完成</td><td>步驟多、需要安排順序的複雜任務</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>範例</h2>
+      <ul>
+        <li>Reflection：寫社群貼文，自己審稿後改寫第二版。</li>
+        <li>Tool Use：問「四個人吃 2380 元加一成服務費，一人多少」，AI 改用計算機算。</li>
+        <li>Planning：規劃三天旅行，先列出每天要做的事，再逐天排細節。</li>
+      </ul>
+
+      <h2>我的理解</h2>
+      <p>三種模式都在補語言模型的弱點：Reflection 補「一次寫不好」，Tool Use 補「算不準、資料不新」，Planning 補「大任務容易漏步驟」。實際應用時也常常混在一起使用。</p>
+
+      <h2>參考資料</h2>
+      <ul>
+        <li>課堂範例 Demo07a、Demo07b、Demo07c</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span data-year></span> 王小明</div>
+  </footer>
+
+  <script src="../data/works.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

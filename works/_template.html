@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>標題｜王小明</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="../index.html">王小明</a>
+      <nav class="site-nav" aria-label="主選單">
+        <a href="../index.html">首頁</a>
+        <a href="../projects.html" aria-current="page">作品與筆記</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 範本：複製這個檔案後改名，規則見 CLAUDE.md。筆記請把 class 改成 detail--note -->
+    <article class="detail detail--project">
+      <a class="back" href="../projects.html">回到作品與筆記</a>
+      <span class="detail__type">程式專案</span>
+      <h1>標題</h1>
+      <p class="detail__meta">YYYY-MM-DD｜標籤一、標籤二</p>
+
+      <!-- 程式專案的段落：專案簡介、使用技術、運作方式、成果截圖、心得 -->
+      <!-- 筆記的段落：重點整理、範例、我的理解、參考資料 -->
+      <h2>專案簡介</h2>
+      <p>內容。</p>
+
+      <h2>成果截圖</h2>
+      <div class="shot shot--empty">請放入截圖：images/檔名-1.png</div>
+      <!-- 有截圖時改成：
+      <figure class="shot">
+        <img src="../images/檔名-1.png" alt="截圖內容說明">
+        <figcaption>圖說</figcaption>
+      </figure>
+      -->
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span data-year></span> 王小明</div>
+  </footer>
+
+  <script src="../data/works.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
