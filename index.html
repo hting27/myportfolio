@@ -6,8 +6,8 @@
   <title>戴湘庭｜作品與筆記</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=experience-20261113">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=reading-20261113">
 </head>
 <body>
   <header class="site-header">
@@ -26,24 +26,22 @@
         <h1 class="hero__name">戴湘庭</h1>
         <p class="hero__role">國立臺灣科技大學電機工程所學生</p>
         <p class="hero__intro">嗨，我是湘庭。這裡收集我做過的程式專案和上課整理的筆記，從簡單的小工具到 AI Agent 實作都有。我喜歡把學到的東西做成真的能用的東西，再把過程寫下來。</p>
-        <div class="hero__actions">
-          <a class="button button--solid" href="projects.html#projects">看程式專案</a>
-          <a class="button" href="projects.html#notes">看學習筆記</a>
-        </div>
+        <p class="hero__actions">
+          <a href="projects.html#projects">看程式專案</a>
+          <a href="projects.html#notes">看學習筆記</a>
+        </p>
       </div>
     </section>
 
-    <section class="section wrap" id="about">
+    <section class="section section--split wrap" id="about">
       <div class="section__head"><h2>關於我</h2></div>
-      <div class="about">
-        <div>
+      <div class="section__body">
+        <div class="about">
           <p>目前就讀國立臺灣科技大學電機工程所。</p>
           <p>悠閒時間喜歡鉤針和打遊戲。希望未來能做出幫助身邊的人解決小麻煩的工具。</p>
-        </div>
-        <div>
           <h3>正在使用的技術</h3>
           <ul class="skills">
-	    <li>C</li>
+            <li>C</li>
             <li>Python</li>
             <li>Gradio</li>
             <li>LLM API</li>
@@ -52,80 +50,79 @@
             <li>Google Colab</li>
           </ul>
         </div>
-      </div>
-      <section class="experience" aria-labelledby="experience-title">
-        <div class="experience__intro">
+
+        <section class="experience" aria-labelledby="experience-title">
           <h3 id="experience-title">經歷</h3>
-          <p>學習與社團參與的歷程</p>
-        </div>
-        <div class="experience__groups">
-          <section aria-labelledby="education-title">
-            <h4 class="experience__category" id="education-title">學歷</h4>
-            <ol class="experience__timeline">
-              <!-- 新增經歷時，複製下方 li，填入實際期間、單位、身分與說明。 -->
-              <li class="experience__item">
-                <div class="experience__meta">
-                  <span class="experience__period">目前</span>
-                  <span class="experience__status">就讀中</span>
-                </div>
-                <div class="experience__content">
-                  <h5>國立臺灣科技大學</h5>
-                  <p>電機工程所學生</p>
-                </div>
-              </li>
-              <li class="experience__item">
-                <div class="experience__meta">
-                  <span class="experience__period"><time datetime="2021">2021</time>－<time datetime="2024">2024</time></span>
-                </div>
-                <div class="experience__content">
-                  <h5>國立政治大學</h5>
-                  <p>經濟學系</p>
-                </div>
-              </li>
-            </ol>
-          </section>
-          <section aria-labelledby="activities-title">
-            <h4 class="experience__category" id="activities-title">社團經驗</h4>
-            <ol class="experience__timeline">
-              <li class="experience__item">
-                <div class="experience__meta">
-                  <span class="experience__period"><time datetime="2022">2022</time>－<time datetime="2024">2024</time></span>
-                </div>
-                <div class="experience__content">
-                  <h5>學生會</h5>
-                  <p>國立政治大學｜秘書部次長</p>
-                </div>
-              </li>
-              <li class="experience__item">
-                <div class="experience__meta">
-                  <span class="experience__period"><time datetime="2022">2022</time>－<time datetime="2024">2024</time></span>
-                </div>
-                <div class="experience__content">
-                  <h5>日本將棋與日本語言文化研究社</h5>
-                  <p>國立政治大學｜財務部長</p>
-                </div>
-              </li>
-              <li class="experience__item">
-                <div class="experience__meta">
-                  <span class="experience__period"><time datetime="2022">2022</time>－<time datetime="2023">2023</time></span>
-                </div>
-                <div class="experience__content">
-                  <h5>電子競技研究社</h5>
-                  <p>國立政治大學｜社長</p>
-                </div>
-              </li>
-            </ol>
-          </section>
-        </div>
-      </section>
+          <div class="experience__groups">
+            <section aria-labelledby="education-title">
+              <h4 class="experience__category" id="education-title">學歷</h4>
+              <ol class="experience__timeline">
+                <!-- 新增經歷時，複製下方 li，填入實際期間、單位、身分與說明。 -->
+                <li class="experience__item">
+                  <div class="experience__meta">
+                    <span class="experience__period">目前</span>
+                    <span class="experience__status">就讀中</span>
+                  </div>
+                  <div class="experience__content">
+                    <h5>國立臺灣科技大學</h5>
+                    <p>電機工程所學生</p>
+                  </div>
+                </li>
+                <li class="experience__item">
+                  <div class="experience__meta">
+                    <span class="experience__period"><time datetime="2021">2021</time>－<time datetime="2024">2024</time></span>
+                  </div>
+                  <div class="experience__content">
+                    <h5>國立政治大學</h5>
+                    <p>經濟學系</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section aria-labelledby="activities-title">
+              <h4 class="experience__category" id="activities-title">社團經驗</h4>
+              <ol class="experience__timeline">
+                <li class="experience__item">
+                  <div class="experience__meta">
+                    <span class="experience__period"><time datetime="2022">2022</time>－<time datetime="2024">2024</time></span>
+                  </div>
+                  <div class="experience__content">
+                    <h5>學生會</h5>
+                    <p>國立政治大學｜秘書部次長</p>
+                  </div>
+                </li>
+                <li class="experience__item">
+                  <div class="experience__meta">
+                    <span class="experience__period"><time datetime="2022">2022</time>－<time datetime="2024">2024</time></span>
+                  </div>
+                  <div class="experience__content">
+                    <h5>日本將棋與日本語言文化研究社</h5>
+                    <p>國立政治大學｜財務部長</p>
+                  </div>
+                </li>
+                <li class="experience__item">
+                  <div class="experience__meta">
+                    <span class="experience__period"><time datetime="2022">2022</time>－<time datetime="2023">2023</time></span>
+                  </div>
+                  <div class="experience__content">
+                    <h5>電子競技研究社</h5>
+                    <p>國立政治大學｜社長</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </section>
+      </div>
     </section>
 
-    <section class="section wrap">
-      <div class="section__head">
-        <h2>最近更新</h2>
-        <a class="section__more" href="projects.html">看全部作品與筆記</a>
+    <section class="section section--split wrap">
+      <div class="section__head"><h2>最近更新</h2></div>
+      <div class="section__body">
+        <ul class="work-list" id="recent-list"></ul>
+        <p class="section__more"><a href="projects.html">看全部作品與筆記</a></p>
       </div>
-      <ul class="work-list" id="recent-list"></ul>
     </section>
   </main>
 
