@@ -13,6 +13,7 @@
   --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
   --wrap: 960px;
+  --measure: 34em;   /* 中文段落每行最多約 34 字，眼睛不用來回找行 */
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -30,49 +31,50 @@
   }
 }
 
-/* ===== 基本設定 ===== */
+/* ===== 基本設定（調整為適合長段中文的行高與字距） ===== */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
-  line-height: 1.8;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  text-spacing-trim: trim-start;   /* 行首全形標點不留空白 */
+  text-autospace: normal;          /* 中英文之間自動留一點空 */
+  line-break: strict;
+  -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.35; margin: 0; }
+h1, h2, h3, h4, h5 { font-family: var(--serif); font-weight: 600; line-height: 1.5; letter-spacing: 0.06em; margin: 0; }
 p { margin: 0 0 1em; }
-a { color: inherit; }
+a { color: inherit; text-decoration-color: var(--line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+a:hover { text-decoration-color: currentColor; }
 img { max-width: 100%; height: auto; display: block; }
+time { font-variant-numeric: tabular-nums; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
 
 /* ===== 頁首與頁尾 ===== */
 .site-header { border-bottom: 1px solid var(--line); background: var(--paper); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
-.site-name { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
-.site-nav { display: flex; gap: 24px; }
-.site-nav a { text-decoration: none; color: var(--muted); padding: 4px 0; border-bottom: 2px solid transparent; }
+.site-name { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.1em; text-decoration: none; }
+.site-nav { display: flex; gap: 24px; font-size: 0.95rem; }
+.site-nav a { text-decoration: none; color: var(--muted); padding: 4px 0; border-bottom: 1px solid transparent; }
 .site-nav a:hover { color: var(--ink); }
 .site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
-.site-footer { border-top: 1px solid var(--line); margin-top: 96px; padding: 32px 0; color: var(--muted); font-size: 0.9rem; }
+.site-footer { border-top: 1px solid var(--line); margin-top: 96px; padding: 32px 0; color: var(--muted); font-size: 0.85rem; }
 
-/* ===== 首頁：方格紙主視覺 ===== */
-.hero {
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 28px 28px;
-  border-bottom: 1px solid var(--line);
-  padding: 88px 0 72px;
-}
-.hero__name { font-size: clamp(2.6rem, 7vw, 4.6rem); letter-spacing: 0.04em; }
-.hero__role { font-size: 1.15rem; color: var(--muted); margin: 12px 0 28px; }
-.hero__intro { max-width: 34em; font-size: 1.1rem; background: var(--paper); padding: 4px 0; }
-.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+/* ===== 首頁開場：拿掉方格背景與按鈕，只留名字、身分與一段話 ===== */
+.hero { padding: 96px 0 72px; }
+.hero__name { font-size: clamp(2.5rem, 7vw, 3.8rem); letter-spacing: 0.14em; line-height: 1.25; }
+.hero__role { font-size: 1rem; color: var(--muted); margin: 14px 0 32px; }
+.hero__intro { max-width: 32em; font-size: 1.125rem; line-height: 2; text-wrap: pretty; }
+.hero__actions { display: flex; gap: 8px 28px; flex-wrap: wrap; margin: 28px 0 0; font-weight: 500; }
+.hero__actions a { color: var(--project); text-decoration-color: currentColor; }
 
+/* 其他頁面若仍使用 .button，保留原本樣式 */
 .button {
   display: inline-block; text-decoration: none; padding: 10px 22px;
   border: 1.5px solid var(--ink); border-radius: 4px; font-weight: 500;
@@ -83,35 +85,46 @@ img { max-width: 100%; height: auto; display: block; }
 /* ===== 區塊 ===== */
 .section { padding-top: 72px; }
 .section__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-.section__head h2 { font-size: 1.6rem; }
-.section__more { color: var(--muted); }
+.section__head h2 { font-size: 1.35rem; letter-spacing: 0.1em; }
+.section__more { color: var(--muted); font-size: 0.95rem; margin-top: 20px; }
 
-.about { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-.about p { max-width: 32em; }
-.skills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.skills li { border: 1px solid var(--line); padding: 2px 12px; border-radius: 999px; font-size: 0.92rem; background: var(--surface); }
-.about h3 { font-size: 1.05rem; margin-bottom: 12px; }
+/* 首頁專用：寬螢幕時標題放左欄、內容放右欄，視線沿同一條線往下 */
+.section--split { padding-top: 48px; padding-bottom: 8px; margin-top: 24px; border-top: 1px solid var(--line); }
+.section--split .section__body { max-width: var(--measure); }
+@media (min-width: 860px) {
+  .section--split { display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: 40px; }
+  .section--split .section__head { margin-bottom: 0; }
+  .section--split .section__head h2 { font-size: 1.15rem; }
+}
 
-/* ===== 作品列表 ===== */
+/* 關於我：技術清單用頓號連成一句，不用膠囊標籤 */
+.about h3 { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.03em; color: var(--muted); margin: 28px 0 4px; }
+.skills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+.skills li:not(:last-child)::after { content: "、"; color: var(--muted); }
+
+/* ===== 作品列表（首頁與作品頁共用） ===== */
 .work-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .work { border-bottom: 1px solid var(--line); }
 .work a {
-  display: grid; grid-template-columns: 7em 1fr; column-gap: 24px;
-  padding: 22px 8px; text-decoration: none;
+  display: grid; grid-template-columns: 6em 1fr; column-gap: 24px;
+  padding: 22px 0; text-decoration: none;
 }
-.work a:hover { background: var(--surface); }
-.work__type { grid-row: span 3; font-size: 0.9rem; font-weight: 500; padding-top: 4px; }
+.work__type { grid-row: span 3; font-size: 0.875rem; font-weight: 500; padding-top: 3px; }
 .work--project .work__type { color: var(--project); }
 .work--note .work__type { color: var(--note); }
-.work__title { font-size: 1.25rem; }
-.work a:hover .work__title { text-decoration: underline; text-underline-offset: 4px; }
-.work__summary { color: var(--ink); margin: 6px 0 4px; }
-.work__meta { color: var(--muted); font-size: 0.88rem; margin: 0; }
-.empty { padding: 32px 8px; color: var(--muted); border-bottom: 1px solid var(--line); }
+.work__title { font-size: 1.15rem; }
+.work a:hover .work__title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+.work__summary { color: var(--ink); margin: 6px 0 4px; max-width: var(--measure); }
+.work__meta { color: var(--muted); font-size: 0.85rem; margin: 0; }
+.empty { padding: 32px 0; color: var(--muted); border-bottom: 1px solid var(--line); }
+
+/* 首頁的列表放在較窄的右欄，類型改到標題上方 */
+.section--split .work a { grid-template-columns: 1fr; }
+.section--split .work__type { grid-row: auto; padding-top: 0; }
 
 /* ===== 作品頁 ===== */
 .page-title { padding: 64px 0 8px; }
-.page-title h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
+.page-title h1 { font-size: clamp(2rem, 5vw, 2.6rem); letter-spacing: 0.1em; }
 .page-title p { color: var(--muted); margin-top: 8px; }
 .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 8px; align-items: center; }
 .filters button {
@@ -121,21 +134,23 @@ img { max-width: 100%; height: auto; display: block; }
 .filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .filters .count { margin-left: auto; color: var(--muted); font-size: 0.9rem; }
 
-/* ===== 內容頁 ===== */
-.detail { max-width: 44em; padding-top: 56px; }
+/* ===== 內容頁（行寬縮到約 38 字，段落間距加大） ===== */
+.detail { max-width: 38em; padding-top: 56px; }
+.detail p { margin-bottom: 1.2em; }
 .back { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
 .back:hover { color: var(--ink); text-decoration: underline; }
 .detail__type { display: inline-block; margin-top: 32px; font-weight: 500; font-size: 0.95rem; }
 .detail--project .detail__type { color: var(--project); }
 .detail--note .detail__type { color: var(--note); }
-.detail h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); margin: 4px 0 8px; }
-.detail__meta { color: var(--muted); font-size: 0.92rem; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
-.detail h2 { font-size: 1.3rem; margin: 48px 0 12px; padding-left: 12px; }
-.detail--project h2 { border-left: 4px solid var(--project); }
-.detail--note h2 { border-left: 4px solid var(--note); }
+.detail h1 { font-size: clamp(1.9rem, 5vw, 2.4rem); margin: 4px 0 8px; }
+.detail__meta { color: var(--muted); font-size: 0.9rem; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.detail h2 { font-size: 1.25rem; margin: 52px 0 14px; padding-left: 12px; }
+.detail--project h2 { border-left: 3px solid var(--project); }
+.detail--note h2 { border-left: 3px solid var(--note); }
 .detail ul, .detail ol { padding-left: 1.4em; }
-.detail code { font-family: var(--mono); font-size: 0.9em; background: var(--surface); border: 1px solid var(--line); padding: 1px 6px; border-radius: 3px; }
-.detail pre { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; line-height: 1.6; }
+.detail li + li { margin-top: 0.35em; }
+.detail code { font-family: var(--mono); font-size: 0.88em; letter-spacing: 0; background: var(--surface); border: 1px solid var(--line); padding: 1px 6px; border-radius: 3px; }
+.detail pre { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; line-height: 1.6; letter-spacing: 0; }
 .detail pre code { border: 0; padding: 0; background: none; }
 .detail table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
 .detail th, .detail td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; vertical-align: top; }
@@ -149,61 +164,33 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ===== 手機版 ===== */
 @media (max-width: 720px) {
-  body { font-size: 16px; }
-  .hero { padding: 56px 0 48px; }
-  .about { grid-template-columns: 1fr; gap: 32px; }
+  body { font-size: 16px; line-height: 1.85; }
+  .hero { padding: 64px 0 48px; }
+  .hero__intro { font-size: 1.0625rem; }
   .work a { grid-template-columns: 1fr; }
   .work__type { grid-row: auto; padding-top: 0; }
   .filters .count { margin-left: 0; width: 100%; }
 }
 
-/* ===== 首頁關於我：經歷時間軸，沿用全站深淺色變數 ===== */
-.experience {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-}
-.experience__intro { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; }
-.experience__intro h3 { font-size: 1.2rem; }
-.experience__intro p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-.experience__groups { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; min-width: 0; }
-.experience__category { margin: 0 0 20px; color: var(--project); font-size: 0.9rem; font-weight: 500; }
+/* ===== 首頁關於我：經歷（拿掉時間軸圓點，改成「年份｜內容」兩欄對齊） ===== */
+.experience { margin-top: 44px; }
+.experience > h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.experience__groups > section + section { margin-top: 28px; }
+.experience__category { margin: 0 0 4px; font-family: var(--sans); color: var(--muted); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.03em; }
 .experience__timeline { list-style: none; margin: 0; padding: 0; }
 .experience__item {
-  position: relative;
-  margin-left: 6px;
-  padding: 0 0 32px 28px;
-  border-left: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  column-gap: 20px;
+  padding: 12px 0;
 }
-.experience__item:last-child { padding-bottom: 4px; }
-.experience__item::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: -6px;
-  width: 11px;
-  height: 11px;
-  border: 2px solid var(--project);
-  border-radius: 50%;
-  background: var(--paper);
-}
-.experience__meta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
-.experience__period { color: var(--muted); font-size: 0.9rem; }
-.experience__status {
-  border: 1px solid var(--project);
-  border-radius: 4px;
-  padding: 0 8px;
-  color: var(--project);
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-.experience__content h5 { margin: 0; font-family: var(--serif); font-size: 1.1rem; font-weight: 700; line-height: 1.5; }
-.experience__content p { margin: 6px 0 0; color: var(--muted); }
-@media (max-width: 720px) {
-  .experience { grid-template-columns: 1fr; gap: 24px; margin-top: 32px; padding-top: 28px; }
-  .experience__groups { grid-template-columns: 1fr; gap: 32px; }
-  .experience__item { padding-left: 24px; }
+.experience__item + .experience__item { border-top: 1px dashed var(--line); }
+.experience__meta { display: flex; flex-direction: column; color: var(--muted); font-size: 0.9rem; }
+.experience__period { font-variant-numeric: tabular-nums; }
+.experience__status { color: var(--project); font-size: 0.8rem; line-height: 1.6; }
+.experience__content h5 { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; letter-spacing: 0.03em; line-height: 1.7; }
+.experience__content p { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 480px) {
+  .experience__item { grid-template-columns: 1fr; }
+  .experience__meta { flex-direction: row; gap: 12px; }
 }
