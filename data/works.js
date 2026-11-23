@@ -1,6 +1,24 @@
 // 所有作品與筆記的資料。新增內容時，請在陣列最前面加一筆（規則見 CLAUDE.md）。
 const WORKS = [
   {
+    id: "linebye-smart-temple",
+    type: "project",
+    title: "LINEBYE 智慧宮廟",
+    summary: "LINE AI 創新創業競賽冠軍：把求籤、點燈與 AI 解籤搬進 LINE。",
+    tags: ["LINE API", "LIFF", "LLM", "ComfyUI"],
+    date: "2026-10-15",
+    link: "works/linebye-smart-temple.html"
+  },
+  {
+    id: "apple-quality-cnn",
+    type: "project",
+    title: "辨識好蘋果與壞蘋果：PyTorch CNN",
+    summary: "用 PyTorch 訓練 CNN 分辨好壞蘋果，測試準確率 98.19%。",
+    tags: ["PyTorch", "CNN", "影像分類"],
+    date: "2026-11-04",
+    link: "works/apple-quality-cnn.html"
+  },
+  {
     id: "tool-use-agent",
     type: "project",
     title: "生活小幫手：Tool Use Agent",

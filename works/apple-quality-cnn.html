@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>辨識好蘋果與壞蘋果：PyTorch CNN｜戴湘庭</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="../index.html">戴湘庭</a>
+      <nav class="site-nav" aria-label="主選單">
+        <a href="../index.html">首頁</a>
+        <a href="../projects.html" aria-current="page">作品與筆記</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="detail detail--project">
+      <a class="back" href="../projects.html">回到作品與筆記</a>
+      <span class="detail__type">程式專案</span>
+      <h1>辨識好蘋果與壞蘋果：PyTorch CNN</h1>
+      <p class="detail__meta">2026-11-04｜PyTorch、CNN、影像分類、模型評估</p>
+
+      <h2>專案簡介</h2>
+      <p>這是我的個人專案：用 PyTorch 從頭訓練一個卷積神經網路（CNN），判斷照片中的蘋果是好蘋果（標籤 0）還是壞蘋果（標籤 1）。最後在 996 張測試影像上答對 978 張，測試準確率 98.19%，Macro F1 為 0.9811。</p>
+      <p>Demo 影片：<a href="https://youtu.be/V8l_jQL-sek">https://youtu.be/V8l_jQL-sek</a></p>
+
+      <h2>使用技術</h2>
+      <ul>
+        <li>Python、PyTorch 2.2.2（CPU 版）</li>
+        <li>4 層卷積的 CNN，搭配 BatchNorm2d、ReLU、最大池化與 Dropout</li>
+        <li>Adam 最佳化器、CrossEntropyLoss、ReduceLROnPlateau 學習率調整</li>
+        <li>評估指標：準確率、精確率、召回率、F1、Macro F1、混淆矩陣</li>
+      </ul>
+
+      <h2>運作方式</h2>
+      <ol>
+        <li><strong>整理資料：</strong>共 5,031 張蘋果影像。先依檔案內容去除重複的圖片，避免同一張圖同時出現在訓練集和測試集；再從原訓練資料按類別抽約 15% 當驗證集。</li>
+        <li><strong>前處理：</strong>每張照片轉成 RGB、縮放到 64 × 64，RGB 各通道以 0.5 為平均值、0.5 為標準差正規化，輸入形狀為 3 × 64 × 64。</li>
+        <li><strong>模型架構：</strong>兩組卷積，每組兩層（32、64 通道），每層後接 BatchNorm2d 與 ReLU，每組最後做一次 2 × 2 最大池化；攤平成 16,384 維向量後，接 256 單元的全連接層（ReLU、Dropout 0.5），輸出好、壞兩類的 logits。</li>
+        <li><strong>訓練：</strong>Batch size 32、10 個回合，Adam 初始學習率 0.001，ReduceLROnPlateau（patience 2、factor 0.5）。</li>
+        <li><strong>挑選模型：</strong>以驗證 loss 最低的回合為準。第 9 回合驗證 loss 為 0.0423，第 10 回合回升到 0.2262、驗證準確率也從 98.18% 掉到 91.90%，所以最終測試採用第 9 回合的權重，而不是最後一回合。</li>
+        <li><strong>測試與比較：</strong>用同一份資料切分比較兩次訓練設定。</li>
+      </ol>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>資料切分</th><th>好蘋果</th><th>壞蘋果</th><th>合計</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>訓練集</td><td>1,439</td><td>1,991</td><td>3,430</td></tr>
+            <tr><td>驗證集</td><td>254</td><td>351</td><td>605</td></tr>
+            <tr><td>測試集</td><td>395</td><td>601</td><td>996</td></tr>
+            <tr><td>合計</td><td>2,088</td><td>2,943</td><td>5,031</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>比較項目</th><th>前次訓練</th><th>本次訓練</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>批次大小／訓練回合</td><td>64／5</td><td>32／10</td></tr>
+            <tr><td>最佳回合</td><td>4</td><td>9</td></tr>
+            <tr><td>測試準確率</td><td>96.49%</td><td>98.19%</td></tr>
+            <tr><td>測試 Macro F1</td><td>0.9638</td><td>0.9811</td></tr>
+            <tr><td>壞蘋果誤判為好蘋果</td><td>34 張</td><td>9 張</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>兩次訓練使用的 PyTorch 版本不同，所以這個差距代表的是整體訓練設定的差異，不能歸因於單一參數。</p>
+
+      <h2>成果截圖</h2>
+      <figure class="shot">
+        <img src="../images/apple-quality-cnn-1.png" alt="訓練與驗證的交叉熵 loss 曲線，共 10 回合，第 9 回合驗證 loss 最低為 0.0423">
+        <figcaption>Loss 曲線：第 9 回合驗證 loss 最低，第 10 回合回升。</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="../images/apple-quality-cnn-2.png" alt="訓練與驗證準確率曲線，第 9 回合驗證準確率 98.18%">
+        <figcaption>準確率曲線：第 9 回合驗證準確率 98.18%。</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="../images/apple-quality-cnn-3.png" alt="測試集混淆矩陣，好蘋果 386 張判對、9 張誤判，壞蘋果 592 張判對、9 張誤判">
+        <figcaption>測試集混淆矩陣：996 張答對 978 張。</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="../images/apple-quality-cnn-4.png" alt="八張測試影像的真實類別、預測類別與信心度">
+        <figcaption>八張測試影像的預測結果與信心度。</figcaption>
+      </figure>
+
+      <h2>心得</h2>
+      <p>這個專案讓我體會到，準確率高不代表模型可靠，還要看資料怎麼切、模型怎麼選。先去除重複圖片，測試結果才不會被灌水；用驗證 loss 挑回合，也避開了最後一回合突然變差的權重。</p>
+      <p>對這個任務來說，把壞蘋果誤判成好蘋果的代價比較高，所以我特別追蹤這一種錯誤，它從 34 張降到 9 張。比較兩次訓練時，我也記下 PyTorch 版本不同這個變因，避免把進步過度歸功於某一個設定。</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span data-year></span> 戴湘庭</div>
+  </footer>
+
+  <script src="../data/works.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
