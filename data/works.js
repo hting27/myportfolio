@@ -1,10 +1,10 @@
-// 所有作品與筆記的資料。新增內容時，請在陣列最前面加一筆（規則見 CLAUDE.md）。
+// Data for all projects and notes. To add an entry, insert it at the top of the array (see CLAUDE.md).
 const WORKS = [
   {
     id: "linebye-smart-temple",
     type: "project",
-    title: "LINEBYE 智慧宮廟",
-    summary: "LINE AI 創新創業競賽冠軍：把求籤、點燈與 AI 解籤搬進 LINE。",
+    title: "LINEBYE Smart Temple",
+    summary: "1st Place, 2026 LINE AI Innovation & Entrepreneurship Competition. Brings fortune-slip drawing, lamp lighting and AI interpretation into LINE.",
     tags: ["LINE API", "LIFF", "LLM", "ComfyUI"],
     date: "2026-10-15",
     link: "works/linebye-smart-temple.html"
@@ -12,17 +12,17 @@ const WORKS = [
   {
     id: "apple-quality-cnn",
     type: "project",
-    title: "辨識好蘋果與壞蘋果：PyTorch CNN",
-    summary: "用 PyTorch 訓練 CNN 分辨好壞蘋果，測試準確率 98.19%。",
-    tags: ["PyTorch", "CNN", "影像分類"],
+    title: "Fresh vs. Rotten Apple Classification with a PyTorch CNN",
+    summary: "A CNN trained in PyTorch to classify fresh and rotten apples, reaching 98.19% test accuracy.",
+    tags: ["PyTorch", "CNN", "Image Classification"],
     date: "2026-11-04",
     link: "works/apple-quality-cnn.html"
   },
   {
     id: "tool-use-agent",
     type: "project",
-    title: "生活小幫手：Tool Use Agent",
-    summary: "AI 會判斷要用計算機、查時間或算 BMI，再根據工具結果回答。",
+    title: "Everyday Assistant: A Tool-Use Agent",
+    summary: "An LLM agent that decides whether to use a calculator, a time lookup or a BMI calculator, then answers based on the tool output.",
     tags: ["Python", "Gradio", "LLM", "Tool Use"],
     date: "2026-11-09",
     link: "works/tool-use-agent.html"
@@ -30,17 +30,17 @@ const WORKS = [
   {
     id: "ai-agent-patterns",
     type: "note",
-    title: "AI Agent 三種設計模式",
-    summary: "整理 Reflection、Tool Use、Planning 的概念與差別。",
-    tags: ["AI Agent", "課堂筆記"],
+    title: "Three AI Agent Design Patterns",
+    summary: "The concepts behind Reflection, Tool Use and Planning, and how they differ.",
+    tags: ["AI Agents", "Course Notes"],
     date: "2026-11-05",
     link: "works/ai-agent-patterns.html"
   },
   {
     id: "reflection-agent",
     type: "project",
-    title: "社群貼文反思小幫手",
-    summary: "AI 先寫貼文、再自己審稿，最後依建議改寫出第二版。",
+    title: "Social Media Post Reflection Agent",
+    summary: "The LLM drafts a post, critiques its own draft, then revises it into a second version.",
     tags: ["Python", "Gradio", "Reflection"],
     date: "2026-10-29",
     link: "works/reflection-agent.html"

@@ -194,3 +194,12 @@ time { font-variant-numeric: tabular-nums; }
   .experience__item { grid-template-columns: 1fr; }
   .experience__meta { flex-direction: row; gap: 12px; }
 }
+
+/* ===== English typography: the site is now in English, so tighten the letter-spacing tuned for Chinese and separate skills with commas ===== */
+body { letter-spacing: normal; line-height: 1.75; }
+h1, h2, h3, h4, h5 { letter-spacing: 0.01em; }
+.hero__name { letter-spacing: 0.02em; }
+.hero__intro { line-height: 1.8; }
+.site-name, .section__head h2, .page-title h1 { letter-spacing: 0.02em; }
+.experience__content h5, .about h3 { letter-spacing: normal; }
+.skills li:not(:last-child)::after { content: ",\00a0"; }

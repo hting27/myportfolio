@@ -13,7 +13,7 @@
 
 ## 2. 整體風格
 
-- 語言：一律使用台灣習慣的繁體中文，語氣自然、簡潔，用第一人稱「我」。
+- 語言：網站內容一律使用英文（English），使用正確的英文專業用語，語氣自然、簡潔，用第一人稱 "I"。英文名字為 Tai Hsiang Ting。
 - 配色：只使用 css/style.css 中 :root 定義的顏色變數，不要另外寫死顏色。
   - 程式專案的強調色：--project（深青綠）
   - 筆記的強調色：--note（墨褐色）
@@ -49,9 +49,9 @@ my-portfolio/
 2. 修改內容頁：
    - `<title>` 和 `<h1>` 換成標題。
    - `<article>` 的 class 依類型設為 `detail detail--project` 或 `detail detail--note`。
-   - 類型標籤文字設為「程式專案」或「筆記」。
-   - 程式專案的段落固定為：專案簡介、使用技術、運作方式、成果截圖、心得。
-   - 筆記的段落固定為：重點整理、範例、我的理解、參考資料。
+   - 類型標籤文字設為 "Project" 或 "Note"。
+   - 程式專案的段落固定為：Overview、Tech Stack、How It Works、Screenshots、Reflections。
+   - 筆記的段落固定為：Key Points、Examples、My Takeaways、References。
    - 沒有截圖時保留 `.shot--empty` 的提示區塊；有截圖時換成 `<img>`，並寫好 alt 說明。
 3. 在 `data/works.js` 的 WORKS 陣列**最前面**新增一筆資料，欄位如下：
    ```js
@@ -59,7 +59,7 @@ my-portfolio/
      id: "檔名不含.html",
      type: "project",          // 程式專案用 "project"，筆記用 "note"
      title: "標題",
-     summary: "一到兩句話的簡介，40 字以內",
+     summary: "One or two sentences, about 25 words or fewer",
      tags: ["技術或主題", "最多四個"],
      date: "2026-11-09",       // 格式固定為 YYYY-MM-DD
      link: "works/檔名.html"
