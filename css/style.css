@@ -203,3 +203,16 @@ h1, h2, h3, h4, h5 { letter-spacing: 0.01em; }
 .site-name, .section__head h2, .page-title h1 { letter-spacing: 0.02em; }
 .experience__content h5, .about h3 { letter-spacing: normal; }
 .skills li:not(:last-child)::after { content: ",\00a0"; }
+
+/* ===== Award badge and pinned entries: trophy icon + award name (list and detail pages); "Pinned" label under the type ===== */
+.award { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 6px; padding: 2px 10px 2px 8px; border: 1px solid var(--note); border-radius: 4px; color: var(--note); font-size: 0.85rem; font-weight: 500; line-height: 1.6; }
+.award__icon { width: 1.3em; height: 1.3em; flex: none; fill: currentColor; }
+.work .award { justify-self: start; }
+.work__type { grid-row: span 4; }
+.work__pin { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 400; }
+.section--split .work__pin { display: inline; margin-left: 8px; }
+.detail .award { margin-top: 12px; }
+.detail .award + h1 { margin-top: 8px; }
+@media (max-width: 720px) {
+  .work__pin { display: inline; margin-left: 8px; }
+}

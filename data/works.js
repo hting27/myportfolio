@@ -4,7 +4,9 @@ const WORKS = [
     id: "linebye-smart-temple",
     type: "project",
     title: "LINEBYE Smart Temple",
-    summary: "1st Place, 2026 LINE AI Innovation & Entrepreneurship Competition. Brings fortune-slip drawing, lamp lighting and AI interpretation into LINE.",
+    summary: "Brings fortune-slip drawing, prayer-lamp lighting and AI fortune-slip interpretation into LINE.",
+    award: "Champion, 2026 LINE AI Innovation & Entrepreneurship Competition",
+    pinned: true,
     tags: ["LINE API", "LIFF", "LLM", "ComfyUI"],
     date: "2026-10-15",
     link: "works/linebye-smart-temple.html"

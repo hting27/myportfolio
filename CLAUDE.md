@@ -65,6 +65,7 @@ my-portfolio/
      link: "works/檔名.html"
    }
    ```
+   選填欄位：`award: "獎項名稱"` 會在列表顯示獎盃圖示與獎項；`pinned: true` 會讓該則固定顯示在列表最上方（目前釘選 LINEBYE）。
 4. 不需要修改 index.html 或 projects.html，列表會自動更新。
 
 ## 6. AI 修改時必須遵守的規則
