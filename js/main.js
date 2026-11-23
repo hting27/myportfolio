@@ -1,5 +1,5 @@
-// 從 data/works.js 的 WORKS 產生列表。一般新增內容不需要改這個檔案。
-const TYPE_LABEL = { project: "程式專案", note: "筆記" };
+// Builds the lists from WORKS in data/works.js. Adding content normally does not require editing this file.
+const TYPE_LABEL = { project: "Project", note: "Note" };
 
 function workItem(w) {
   return `
@@ -8,7 +8,7 @@ function workItem(w) {
         <span class="work__type">${TYPE_LABEL[w.type]}</span>
         <h3 class="work__title">${w.title}</h3>
         <p class="work__summary">${w.summary}</p>
-        <p class="work__meta">${w.date}｜${w.tags.join("、")}</p>
+        <p class="work__meta">${w.date} | ${w.tags.join(", ")}</p>
       </a>
     </li>`;
 }
@@ -17,13 +17,13 @@ function sortedWorks() {
   return [...WORKS].sort((a, b) => b.date.localeCompare(a.date));
 }
 
-// 首頁：最近更新三則
+// Home page: three most recent entries
 const recentList = document.getElementById("recent-list");
 if (recentList) {
   recentList.innerHTML = sortedWorks().slice(0, 3).map(workItem).join("");
 }
 
-// 作品頁：分類切換
+// Projects page: filter by type
 const workList = document.getElementById("work-list");
 if (workList) {
   const tabs = document.querySelectorAll("[data-filter]");
@@ -34,10 +34,10 @@ if (workList) {
     const items = sortedWorks().filter(w => filter === "all" || w.type === filter);
     workList.innerHTML = items.length
       ? items.map(workItem).join("")
-      : `<li class="empty">這個分類還沒有內容。</li>`;
+      : `<li class="empty">No entries in this category yet.</li>`;
     tabs.forEach(t => t.setAttribute("aria-pressed", String(t.dataset.filter === filter)));
     const count = document.getElementById("work-count");
-    if (count) count.textContent = `共 ${items.length} 則`;
+    if (count) count.textContent = `${items.length} ${items.length === 1 ? "entry" : "entries"}`;
   }
 
   tabs.forEach(tab => {
@@ -52,5 +52,5 @@ if (workList) {
   show(hashToFilter[location.hash] || "all");
 }
 
-// 頁尾年份
+// Footer year
 document.querySelectorAll("[data-year]").forEach(el => (el.textContent = new Date().getFullYear()));

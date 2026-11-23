@@ -1,87 +1,87 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LINEBYE 智慧宮廟｜戴湘庭</title>
+  <title>LINEBYE Smart Temple | Tai Hsiang Ting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=en-20261123">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="site-name" href="../index.html">戴湘庭</a>
-      <nav class="site-nav" aria-label="主選單">
-        <a href="../index.html">首頁</a>
-        <a href="../projects.html" aria-current="page">作品與筆記</a>
+      <a class="site-name" href="../index.html">Tai Hsiang Ting</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../projects.html" aria-current="page">Projects &amp; Notes</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
     <article class="detail detail--project">
-      <a class="back" href="../projects.html">回到作品與筆記</a>
-      <span class="detail__type">程式專案</span>
-      <h1>LINEBYE 智慧宮廟</h1>
-      <p class="detail__meta">2026-10-15｜LINE Messaging API、LIFF、LLM、ComfyUI</p>
+      <a class="back" href="../projects.html">Back to Projects &amp; Notes</a>
+      <span class="detail__type">Project</span>
+      <h1>LINEBYE Smart Temple</h1>
+      <p class="detail__meta">2026-10-15 | LINE Messaging API, LIFF, LLM, ComfyUI</p>
 
-      <h2>專案簡介</h2>
-      <p>LINEBYE 是我和王彥博組成「LINE趣宮廟」團隊，參加 2026 LINE AI 創新創業競賽的作品，最後獲得冠軍。評審最肯定的是作品的完整性和可行性。</p>
-      <p>宮廟有故事、有信眾，問答、點燈、活動通知卻多半靠人工，年輕人拜完就離開。LINEBYE 把宮廟服務搬進 LINE，讓一次參拜變成持續的對話：信眾在家也能求籤、點燈、問問題，宮廟也能用 AI 自動產生社群內容。原型以台中萬春宮為首站構想，尚未正式合作。</p>
-      <p>我負責整體主架構、頁面與功能設計。</p>
+      <h2>Overview</h2>
+      <p>LINEBYE is the project my teammate Wang Yen-Po and I built as team "LINE Fun Temple" for the 2026 LINE AI Innovation &amp; Entrepreneurship Competition, where it won 1st Place. The judges particularly recognized its completeness and feasibility.</p>
+      <p>Temples have rich stories and loyal worshippers, yet Q&amp;A, lamp-lighting registration and event notifications are still largely handled manually, and young visitors tend to leave right after worshipping. LINEBYE brings temple services into LINE, turning a one-time visit into an ongoing conversation: worshippers can draw fortune slips, light prayer lamps and ask questions from home, while temples can generate social media content automatically with AI. The prototype uses Wanchun Temple in Taichung as its proposed pilot site; no formal partnership has been established yet.</p>
+      <p>I was responsible for the overall system architecture, page structure and feature design.</p>
 
-      <h2>使用技術</h2>
+      <h2>Tech Stack</h2>
       <ul>
-        <li>LINE 官方帳號 + Messaging API：AI 回覆，籤詩與打卡結果推播回聊天室</li>
-        <li>Rich Menu：六格功能選單，一鍵進入各項服務</li>
-        <li>LIFF／LINE MINI App：靈籤、點燈、冥想、走讀在 LINE 內開啟</li>
-        <li>LINE Login（ID Token）：後端向 LINE 驗證使用者身分</li>
-        <li>LLM 語言模型與視覺模型：數位助理問答、AI 解籤、照片辨識</li>
-        <li>ComfyUI 工作流：生成 16 款媽祖 LINE 貼圖、自動產生短影音與貼文</li>
+        <li>LINE Official Account + Messaging API: AI replies, and push messages that send fortune-slip and check-in results back to the chat</li>
+        <li>Rich Menu: a six-tile menu giving one-tap access to each service</li>
+        <li>LIFF / LINE MINI App: fortune-slip drawing, lamp lighting, meditation and the walking tour open inside LINE</li>
+        <li>LINE Login (ID token): server-side user authentication with LINE</li>
+        <li>Large language models and vision models: assistant Q&amp;A, AI fortune-slip interpretation and image recognition</li>
+        <li>ComfyUI workflows: generating 16 Mazu LINE stickers and automatically producing short videos and posts</li>
       </ul>
 
-      <h2>運作方式</h2>
+      <h2>How It Works</h2>
       <ol>
-        <li><strong>加好友與 Rich Menu：</strong>信眾加入宮廟官方帳號後，從六格選單進入線上靈籤、正念冥想、藍興之謎、祈安點燈、信眾中心與大殿首頁。</li>
-        <li><strong>沉浸式求籤：</strong>在 LIFF 頁面搖動籤筒抽籤，須連續擲出三個聖筊才能領籤，再把籤文傳回聊天室。</li>
-        <li><strong>AI 數位助理：</strong>用宮廟的語氣 24 小時回答參拜流程、神尊與活動問題；收到籤詩文字或照片後進行 AI 解籤，也能辨識籤詩、神像、平安符的照片並說明文化意義。Webhook 先回應、再在背景生成答案，常見問題則用預先準備的回答秒回當備援，AI 回覆會標示為文化解讀。</li>
-        <li><strong>AI 社群內容：</strong>宮廟人員選 2～10 張素材照片，系統自動加上運鏡、旁白、字幕做成短影音，再連同文案與標籤一鍵發布到社群。</li>
-        <li><strong>城市解謎與貼圖：</strong>「藍興之謎」讓信眾走進街區找答案、認識廟宇歷史；ComfyUI 生成的媽祖貼圖自動去背、加字，並打包成 LINE 上架規格，加好友即可免費下載。</li>
+        <li><strong>Onboarding and Rich Menu:</strong> After adding the temple's Official Account as a friend, worshippers use the six-tile menu to open online fortune slips, mindfulness meditation, the "Lanxing Mystery" puzzle tour, prayer-lamp lighting, the member center and the main hall home page.</li>
+        <li><strong>Immersive fortune-slip drawing:</strong> On a LIFF page, users shake the fortune-stick container to draw a slip and must cast three consecutive affirmative moon blocks (<i>sheng bei</i>) before receiving it. The slip is then sent back to the chat.</li>
+        <li><strong>AI assistant:</strong> Available 24/7, the assistant answers questions about worship procedures, deities and events in the temple's own tone. It interprets fortune slips sent as text or photos, and recognizes photos of fortune slips, deity statues and amulets to explain their cultural meaning. The webhook acknowledges each request immediately and generates the answer in the background, with predefined answers to frequently asked questions serving as an instant fallback. AI replies are labeled as cultural interpretations.</li>
+        <li><strong>AI-generated social media content:</strong> Temple staff select 2–10 photos, and the system automatically adds camera motion, voice-over and subtitles to produce a short video, then publishes it to social media together with the caption and hashtags in one click.</li>
+        <li><strong>City puzzle tour and stickers:</strong> The "Lanxing Mystery" leads worshippers through the neighborhood to solve clues and learn the temple's history. The Mazu stickers generated with ComfyUI are automatically background-removed, captioned and packaged to LINE's sticker specifications, and are free to download after adding the account as a friend.</li>
       </ol>
-      <p>規劃中的功能：LINE Beacon 推播、LINE Touch 現場感應打卡與 LINE Pay 付款（原型中為示範流程）。貼圖上架與聯名須取得廟方授權。</p>
+      <p>Planned features include LINE Beacon push notifications, on-site check-in with LINE Touch and payment with LINE Pay (shown as demo flows in the prototype). Publishing the stickers and any co-branding require authorization from the temple.</p>
 
-      <h2>成果截圖</h2>
+      <h2>Screenshots</h2>
       <figure class="shot">
-        <img src="../images/linebye-smart-temple-1.png" alt="沉浸式求籤流程四步驟：抽取靈籤、確認靈籤、擲筊請示、顯示籤文">
-        <figcaption>沉浸式求籤流程：抽籤、確認、擲筊、顯示籤文並傳回聊天室。</figcaption>
+        <img src="../images/linebye-smart-temple-1.png" alt="Four steps of the immersive fortune-slip flow: drawing a slip, confirming it, casting moon blocks and displaying the slip text">
+        <figcaption>Immersive fortune-slip flow: draw, confirm, cast moon blocks, then display the slip and send it to the chat.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="../images/linebye-smart-temple-2.png" alt="AI 數位助理在 LINE 聊天室中解讀文字籤詩與圖像籤詩">
-        <figcaption>AI 數位助理：籤詩文字或照片傳回聊天室後由 AI 解籤。</figcaption>
+        <img src="../images/linebye-smart-temple-2.png" alt="The AI assistant interpreting a text fortune slip and a photographed fortune slip in a LINE chat">
+        <figcaption>AI assistant: fortune slips sent back to the chat as text or photos are interpreted by AI.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="../images/linebye-smart-temple-3.png" alt="三步驟發文：準備素材、自動生成短影音、一鍵發布至社群">
-        <figcaption>宮廟後台：三步驟自動生成短影音並發布。</figcaption>
+        <img src="../images/linebye-smart-temple-3.png" alt="Three-step posting flow: prepare assets, auto-generate a short video and publish to social media in one click">
+        <figcaption>Temple admin console: generate and publish a short video in three steps.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="../images/linebye-smart-temple-4.png" alt="抽籤擲筊、祈安點燈、正念冥想、宮廟小編四個 LINE 內互動畫面">
-        <figcaption>更多 LINE 內互動：抽籤擲筊、祈安點燈、正念冥想、AI 宮廟小編。</figcaption>
+        <img src="../images/linebye-smart-temple-4.png" alt="Four in-LINE features: fortune-slip drawing with moon blocks, prayer-lamp lighting, mindfulness meditation and the AI temple assistant">
+        <figcaption>More in-LINE engagement: fortune slips and moon blocks, prayer lamps, meditation and the AI temple assistant.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="../images/linebye-smart-temple-5.png" alt="從加好友、Rich Menu、LIFF 互動、推播通知到回訪的流程，以及各項 LINE 功能的用法表">
-        <figcaption>從加好友到回訪都在 LINE 裡完成，以及每項 LINE 功能的用法。</figcaption>
+        <img src="../images/linebye-smart-temple-5.png" alt="User journey from adding a friend through Rich Menu, LIFF interaction and push notifications to return visits, with a table of how each LINE feature is used">
+        <figcaption>The full journey, from adding a friend to return visits, happens inside LINE, along with how each LINE feature is used.</figcaption>
       </figure>
 
-      <h2>心得</h2>
-      <p>這次比賽讓我學到，AI 功能要放進使用者本來就在用的地方才會被使用。宮廟的信眾橫跨各個年齡層，大家都會用 LINE，所以我們把所有服務都設計在 LINE 裡完成，從加好友、互動到回訪不需要另外下載 App。</p>
-      <p>在設計 AI 回覆時，我也發現光是「能回答」還不夠：生成需要時間，所以讓 Webhook 先回應、再在背景產生答案，並準備常見問題的備援回覆；解籤內容也明確標示為文化解讀。這些細節讓作品不只是展示，而是真的可以用。</p>
+      <h2>Reflections</h2>
+      <p>This competition taught me that AI features get used only when they live where users already are. Temple worshippers span every age group, and nearly all of them use LINE, so we designed every service to run inside LINE. From adding the account to engaging and returning, users never need to download a separate app.</p>
+      <p>While designing the AI replies, I also realized that being able to answer is not enough. Because generation takes time, the webhook responds first and produces the answer in the background, with fallback replies prepared for common questions; fortune-slip interpretations are also clearly labeled as cultural interpretations. These details are what make the project usable in practice rather than just a demo.</p>
     </article>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">© <span data-year></span> 戴湘庭</div>
+    <div class="wrap">© <span data-year></span> Tai Hsiang Ting</div>
   </footer>
 
   <script src="../data/works.js"></script>
